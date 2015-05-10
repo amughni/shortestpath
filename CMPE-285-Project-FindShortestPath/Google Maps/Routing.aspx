@@ -26,7 +26,7 @@
     <script>
         var directionsDisplay;
         var directionsService = new google.maps.DirectionsService();
-        var map;
+        var map, trafficLayer;
 
         function initialize() {
           directionsDisplay = new google.maps.DirectionsRenderer();
@@ -36,7 +36,9 @@
             center: chicago
           };
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+          trafficLayer = new google.maps.TrafficLayer();
           directionsDisplay.setMap(map);
+          trafficLayer.setMap(map);
         }
 
         function calcRoute() {

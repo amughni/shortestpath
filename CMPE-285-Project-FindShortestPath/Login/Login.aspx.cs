@@ -28,7 +28,7 @@ namespace CMPE_285_Project_FindShortestPath.Login
             }
         }
 
-        public async void GetCollection()
+        public void GetCollection()
         {
             string username = LoginCtrl.UserName;
             string password = LoginCtrl.Password;
@@ -40,7 +40,7 @@ namespace CMPE_285_Project_FindShortestPath.Login
 
             var collection = db.GetCollection<LoginInfo>("login");
 
-            var users = await collection.Find(x => x.username == username && x.password == password).ToListAsync();
+            var users = collection.Find(x => x.username == username && x.password == password).ToListAsync();
 
             if (users != null)
             {

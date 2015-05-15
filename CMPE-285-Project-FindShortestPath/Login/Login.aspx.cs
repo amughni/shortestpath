@@ -18,10 +18,17 @@ namespace CMPE_285_Project_FindShortestPath.Login
 
         protected void LoginCtrl_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            GetCollection();
+            try
+            {
+                GetCollection();
+            }
+            catch (Exception ee)
+            {
+                //
+            }
         }
 
-        protected async void GetCollection()
+        public async void GetCollection()
         {
             string username = LoginCtrl.UserName;
             string password = LoginCtrl.Password;
@@ -31,12 +38,19 @@ namespace CMPE_285_Project_FindShortestPath.Login
 
             var db = mongoClient.GetDatabase("cmpe285project");
 
-            var collection = db.GetCollection<Login>("login");
+            var collection = db.GetCollection<LoginInfo>("login");
 
             var users = await collection.Find(x => x.username == username && x.password == password).ToListAsync();
+
+            if (users != null)
+            {
+                Response.Redirect("Google%20Maps/Routing.aspx");
+            }
+            else
+                throw new Exception("Invalid username or password.");
         }
 
-        public class Login
+        public class LoginInfo
         {
             public string username { get; set; }
 

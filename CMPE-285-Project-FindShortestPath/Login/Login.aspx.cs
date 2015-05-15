@@ -44,7 +44,7 @@ namespace CMPE_285_Project_FindShortestPath.Login
 
             if (users != null)
             {
-                Response.Redirect("Google%20Maps/Routing.aspx");
+                Response.Redirect("~/GoogleMaps/Routing.aspx");
             }
             else
                 throw new Exception("Invalid username or password.");

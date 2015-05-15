@@ -196,8 +196,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Google Maps\Maps.aspx" />
-    <Content Include="Google Maps\Routing.aspx" />
+    <Content Include="GoogleMaps\Maps.aspx" />
+    <Content Include="GoogleMaps\Routing.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -388,18 +388,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Google Maps\Maps.aspx.cs">
+    <Compile Include="GoogleMaps\Maps.aspx.cs">
       <DependentUpon>Maps.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Google Maps\Maps.aspx.designer.cs">
+    <Compile Include="GoogleMaps\Maps.aspx.designer.cs">
       <DependentUpon>Maps.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Google Maps\Routing.aspx.cs">
+    <Compile Include="GoogleMaps\Routing.aspx.cs">
       <DependentUpon>Routing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Google Maps\Routing.aspx.designer.cs">
+    <Compile Include="GoogleMaps\Routing.aspx.designer.cs">
       <DependentUpon>Routing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.aspx.cs">

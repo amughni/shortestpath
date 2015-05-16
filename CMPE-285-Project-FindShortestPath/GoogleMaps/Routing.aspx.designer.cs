@@ -22,6 +22,15 @@ namespace CMPE_285_Project_FindShortestPath.Google_Maps {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// LinkAppointment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkAppointment;
+        
+        /// <summary>
         /// lnkLogout control.
         /// </summary>
         /// <remarks>

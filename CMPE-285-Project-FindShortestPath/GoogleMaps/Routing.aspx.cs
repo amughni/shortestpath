@@ -22,5 +22,10 @@ namespace CMPE_285_Project_FindShortestPath.Google_Maps
             Session.Clear();
             Response.Redirect("~/Login/Login.aspx");
         }
+
+        protected void lnkAppointment(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Services/Appointment.aspx");
+        }
     }
 }

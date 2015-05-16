@@ -204,12 +204,12 @@
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand">Cover</h3>
+                        <h3 class="masthead-brand">Comparison </h3>
                         <form id="form1" runat="server">
                             <nav>
                                 <ul class="nav masthead-nav">
                                     <li class="active"><a href="#">Home</a></li>
-                                    <li><a href="#">Appointment</a></li>
+                                    <li><asp:LinkButton ID="LinkAppointment" runat="server" OnClick="lnkAppointment">Appointment</asp:LinkButton> </li>
                                     <li><a href="#">Doctor</a></li>
                                     <li><a href="#">Parking</a></li>
                                     <li><a href="#">Patient</a></li>
@@ -224,8 +224,8 @@
                 </div>
 
                 <div class="mastfoot">
-                    <div class="inner">
-                        <p>Build and managed by Team 3</p>
+                    <div class="inner" id="LinkAppointment">
+                        <p>Build and managed by Team 6</p>
                     </div>
                 </div>
 

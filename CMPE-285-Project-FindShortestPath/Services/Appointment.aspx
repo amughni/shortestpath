@@ -21,7 +21,7 @@
         }
     </style>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAabirU2cPAJm-xMUu_3bt6yIcTjuhFVDc&sensor=false"></script>
-    <title>Cover Template for Bootstrap</title>
+    <title>Appointment Information</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/include/css/bootstrap.min.css" rel="stylesheet">
@@ -50,8 +50,8 @@
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand">Cover</h3>
-                        <nav>
+                        <h3 class="masthead-brand">Appointment Details</h3>
+                         <nav>
                             <ul class="nav masthead-nav">
                                 <li class="active"><a href="#">Home</a></li>
                                 <li><a href="#">Appointment</a></li>
@@ -60,7 +60,7 @@
                                 <li><a href="#">Patient</a></li>
                             </ul>
                         </nav>
-                    </div>
+                      </div>
                 </div>
 
                 <div class="inner cover">
@@ -68,7 +68,7 @@
 
                 <div class="mastfoot">
                     <div class="inner">
-                        <p>Build and managed by Team 3</p>
+                        <p>Build and managed by Team 6</p>
                     </div>
                 </div>
 
@@ -81,24 +81,34 @@
 
 
 
-            <div id="addAppointment" class="container">
-                <div class="row">
+            <div id="addAppointment" class="container" >
+                <form id="form1" method="post" runat="server">
+                <div class="row">                    
                     <div class="col-md-3">Doctor ID</div>
-                    <div class="col-md-3"><asp:TextBox ID="doctorid" runat="server" ></asp:TextBox></div>
+                    <div class="col-md-3"><asp:TextBox ID="doctorid" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox></div>                    
                     <div class="col-md-3">Patient Name</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientName" runat="server" ></asp:TextBox></div>
+                    <div class="col-md-3"><asp:TextBox ID="patientName" runat="server" BackColor="#66FF66" ForeColor="Black" ></asp:TextBox></div>                
                 </div>
-
+                     <div>
+          </div>
                 <div class="row">
+                    <div class="col-md-3">Date</div>
+                    <div class="col-md-3"><asp:TextBox ID="date" runat="server" BackColor="#66FF66" ForeColor="Black" ></asp:TextBox></div> 
                     <div class="col-md-3">Time</div>
-                    <div class="col-md-3"><asp:TextBox ID="time" runat="server" ></asp:TextBox></div>
+                    <div class="col-md-3"><asp:TextBox ID="time" runat="server" BackColor="#66FF66" ForeColor="Black" ></asp:TextBox></div>                        
                 </div>
+                 
+                <nav>
+                     <li><asp:LinkButton ID="submit" runat="server"  OnClientClick="submt" OnClick="submit_Click">Submit</asp:LinkButton></li>
+                </nav>
+                    </form>
             </div>
-
-
+           
+            <asp:Label ID="Message" runat="server" Text=""></asp:Label>
         </div>
-
+        
     </div>
+    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

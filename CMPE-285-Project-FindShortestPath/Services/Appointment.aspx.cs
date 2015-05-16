@@ -14,6 +14,17 @@ namespace CMPE_285_Project_FindShortestPath.Services
 
         }
 
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            //Response.Write("<script>alert('Appointment booked successfully')</script>");
+            
+
+            Message.Text = "Appointment booked successsfully";
+        }
+
+
+
+
         protected void lnkLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();

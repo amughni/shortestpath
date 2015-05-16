@@ -31,6 +31,15 @@ namespace CMPE_285_Project_FindShortestPath.Services {
         protected global::System.Web.UI.HtmlControls.HtmlTable tblViewAppointments;
         
         /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// doctorid control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace CMPE_285_Project_FindShortestPath.Services {
         protected global::System.Web.UI.WebControls.TextBox patientName;
         
         /// <summary>
+        /// date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox date;
+        
+        /// <summary>
         /// time control.
         /// </summary>
         /// <remarks>
@@ -56,5 +74,23 @@ namespace CMPE_285_Project_FindShortestPath.Services {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox time;
+        
+        /// <summary>
+        /// submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton submit;
+        
+        /// <summary>
+        /// Message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Message;
     }
 }

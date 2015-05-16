@@ -11,7 +11,16 @@ namespace CMPE_285_Project_FindShortestPath.Google_Maps
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Authenticated"] == null)
+            {
+                Response.Redirect("~/Login/Login.aspx");
+            }
+        }
 
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/Login/Login.aspx");
         }
     }
 }

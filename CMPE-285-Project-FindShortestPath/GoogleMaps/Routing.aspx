@@ -158,7 +158,7 @@
 
     </script>
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Routes Map</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/include/css/bootstrap.min.css" rel="stylesheet">
@@ -178,7 +178,7 @@
 </head>
 
 <body onload="initialize()">
-
+    
     <div class="site-wrapper">
 
         <div class="site-wrapper-inner">
@@ -187,14 +187,16 @@
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand">Cover</h3>
-                        <nav>
-                            <ul class="nav masthead-nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#">Features</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </nav>
+                        <h3 class="masthead-brand">Comparison between Google and Non-Google Approach</h3>
+                        <form id="form1" runat="server">
+                            <nav>
+                                <ul class="nav masthead-nav">
+                                    <li class="active"><a href="#">Home</a></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
+                                </ul>
+                            </nav>
+                        </form>
                     </div>
                 </div>
 
@@ -203,7 +205,7 @@
 
                 <div class="mastfoot">
                     <div class="inner">
-                        <p>Build and managed by Team 3</p>
+                        <p>Build and managed by Team 6</p>
                     </div>
                 </div>
 
@@ -270,5 +272,6 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    
 </body>
 </html>

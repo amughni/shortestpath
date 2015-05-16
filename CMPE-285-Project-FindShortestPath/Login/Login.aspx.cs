@@ -44,6 +44,7 @@ namespace CMPE_285_Project_FindShortestPath.Login
 
             if (users != null)
             {
+                Session["Authenticated"] = "true";
                 Response.Redirect("~/GoogleMaps/Routing.aspx");
             }
             else

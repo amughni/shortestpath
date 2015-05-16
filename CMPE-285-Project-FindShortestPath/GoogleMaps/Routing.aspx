@@ -213,15 +213,18 @@
                 <div class="masthead clearfix">
                     <div class="inner">
                         <h3 class="masthead-brand">Cover</h3>
-                        <nav>
-                            <ul class="nav masthead-nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#">Appointment</a></li>
-                                <li><a href="#">Doctor</a></li>
-                                <li><a href="#">Parking</a></li>
-                                <li><a href="#">Patient</a></li>
-                            </ul>
-                        </nav>
+                        <form id="form1" runat="server">
+                            <nav>
+                                <ul class="nav masthead-nav">
+                                    <li class="active"><a href="#">Home</a></li>
+                                    <li><a href="#">Appointment</a></li>
+                                    <li><a href="#">Doctor</a></li>
+                                    <li><a href="#">Parking</a></li>
+                                    <li><a href="#">Patient</a></li>
+                                    <li><asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
+                                </ul>
+                            </nav>
+                        </form>
                     </div>
                 </div>
 

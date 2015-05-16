@@ -42,7 +42,7 @@
 
 <body onload="initialize()">
 
-    <div class="site-wrapper">
+    <form id="form1" runat="server" class="site-wrapper">
 
         <div class="site-wrapper-inner">
 
@@ -64,65 +64,67 @@
                 </div>
 
                 <div class="inner cover">
+                    <div id="viewClient" visible="false" runat="server">
+                    </div>
+                    <div id="editClient" runat="server" visible="false">
+                        <div class="row">
+                            <div class="col-md-3">Name</div>
+                            <div class="col-md-3">
+                                <asp:TextBox ID="patientName" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="col-md-3">Address</div>
+                            <div class="col-md-3">
+                                <asp:TextBox ID="patientAddress" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">Phone</div>
+                            <div class="col-md-3">
+                                <asp:TextBox ID="patientPhone" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="col-md-3">Email</div>
+                            <div class="col-md-3">
+                                <asp:TextBox ID="patientEmail" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">History</div>
+                            <div class="col-md-3">
+                                <asp:TextBox ID="patientHistory" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="col-md-3">Blood Group</div>
+                            <div class="col-md-3">
+                                <asp:TextBox ID="patientBloodGroup" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                            <br />
+                            <asp:Button ID="btnAddPatient" CssClass="btn btn-primary" OnClick="btnAddPatient_Click" runat="server" Text="Add Patient" />
+                            <asp:Button ID="btnAdd" Visible="false" CssClass="btn btn-primary" OnClick="btnAdd_Click" runat="server" Text="Add to database" />
+                            <asp:Button ID="btnViewPatient" CssClass="btn btn-primary" OnClick="btnViewPatient_Click" runat="server" Text="View Patient" />
+
+
+                        </div>
                 </div>
 
                 <div class="mastfoot">
                     <div class="inner">
-                        <p>Build and managed by Team 3</p>
+                        <p>Build and managed by Team 6</p>
                     </div>
                 </div>
 
             </div>
-            <div id="viewClient" class="container">
-                <div class="row">
-                    <div class="col-md-3">Name</div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">Address</div>
-                    <div class="col-md-3"></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">Phone</div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">Email</div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">History</div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">Blood Group</div>
-                    <div class="col-md-3"></div>
-                </div>
-            </div>
 
 
 
-            <div id="editClient" class="container">
-                <div class="row">
-                    <div class="col-md-3">Name</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientName" runat="server" ></asp:TextBox></div>
-                    <div class="col-md-3">Address</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientAddress" runat="server" ></asp:TextBox></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">Phone</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientPhone" runat="server" ></asp:TextBox></div>
-                    <div class="col-md-3">Email</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientEmail" runat="server" ></asp:TextBox></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">History</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientHistory" runat="server" ></asp:TextBox></div>
-                    <div class="col-md-3">Blood Group</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientBloodGroup" runat="server" ></asp:TextBox></div>
-                </div>
-            </div>
 
 
         </div>
 
-    </div>
+    </form>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

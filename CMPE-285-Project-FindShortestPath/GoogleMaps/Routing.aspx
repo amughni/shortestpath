@@ -175,7 +175,7 @@
 
     </script>
 
-    <title>Routes Map</title>
+    <title>Cover Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/include/css/bootstrap.min.css" rel="stylesheet">
@@ -195,7 +195,7 @@
 </head>
 
 <body onload="initialize()">
-    
+
     <div class="site-wrapper">
 
         <div class="site-wrapper-inner">
@@ -204,16 +204,16 @@
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand">Comparison between Google and Non-Google Approach</h3>
-                        <form id="form1" runat="server">
-                            <nav>
-                                <ul class="nav masthead-nav">
-                                    <li class="active"><a href="#">Home</a></li>
-                                    <li>
-                                        <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
-                                </ul>
-                            </nav>
-                        </form>
+                        <h3 class="masthead-brand">Cover</h3>
+                        <nav>
+                            <ul class="nav masthead-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Appointment</a></li>
+                                <li><a href="#">Doctor</a></li>
+                                <li><a href="#">Parking</a></li>
+                                <li><a href="#">Patient</a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
 
@@ -222,7 +222,7 @@
 
                 <div class="mastfoot">
                     <div class="inner">
-                        <p>Build and managed by Team 6</p>
+                        <p>Build and managed by Team 3</p>
                     </div>
                 </div>
 
@@ -258,7 +258,7 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-md-5">
+                    <div class="col-md-5"> 
                         <h4>Google Approach</h4>
                         <div class="mapCanvas" id="map-canvas"></div>
                         <div id="route1">
@@ -286,6 +286,5 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    
 </body>
 </html>

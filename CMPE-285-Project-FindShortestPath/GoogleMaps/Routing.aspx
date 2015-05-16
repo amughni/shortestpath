@@ -27,6 +27,10 @@
         var directionsDisplay = [];
         var directionsDisplay1 = [];
         var directionsDisplay2 = [];
+        var minresponse1=999999999;
+        var minresponse2 = 999999999;
+        var minvalue1;
+        var minvalue2;
         //var hospitalcoordinates = ["37.3588482,-121.8420857"];
         var hospitals = [{ name: "Santa Clara Urgent Care", address: "Santa Clara Urgent Care 1825 Civic Center Dr # 7" },
             { name: "Kaiser Permanente ", address: "Kaiser Permanente Santa Clara Medical Center 700 Lawrence Expy" },
@@ -70,6 +74,7 @@
         function calcRoute(mpn) {
             var start = document.getElementById('start').value;
             var end = document.getElementById('end').value;
+            
 
             var m;
             var alt;
@@ -85,61 +90,73 @@
                 directionsDisplay = directionsDisplay2;
             }
 
+            for (var j = 0; j < hospitals.length; j++) {
 
+                //alert(hospitals[j].address);
+                var request = {
+                    origin: start,
+                    destination: hospitals[j].address,
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    provideRouteAlternatives: alt,
+                    durationInTraffic: true,
+                    avoidHighways: alt,
+                    optimizeWaypoints: alt
+                };
+                
+                directionsService.route(request, function (response, status) {
+                    console.log(response);
 
-            var request = {
-                origin: start,
-                destination: end,
-                travelMode: google.maps.TravelMode.DRIVING,
-                provideRouteAlternatives: false,
-                durationInTraffic: true,
-                avoidHighways: alt,
-                optimizeWaypoints: false
-            };
-            directionsService.route(request, function (response, status) {
-                console.log(response);
-
-                if (status == google.maps.DirectionsStatus.OK) {
-                    //directionsDisplay.setDirections(response);
-
-                    if (mpn == "1") {
-                        for (var k = 0; k < directionsDisplay1.length; k++) {
-                            directionsDisplay1[k].setMap(null);
-                        }
-                    }
-                    else {
-                        document.getElementById("route2").innerHTML = "";
-                        for (var k = 0; k < directionsDisplay2.length; k++) {
-                            directionsDisplay2[k].setMap(null);
-                        }
-                    }
-                    //alert("calling time out");
-                    for (var i = 0, len = response.routes.length; i < len; i++) {
-                        //response.routes[i].legs[0].duration.value;
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        //directionsDisplay.setDirections(response);
 
                         if (mpn == "1") {
-
-                            directionsDisplay1[i] = new google.maps.DirectionsRenderer({
-                                map: m,
-                                directions: response,
-                                routeIndex: i
-                            });
-                            document.getElementById("route1").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
-
+                            for (var k = 0; k < directionsDisplay1.length; k++) {
+                                directionsDisplay1[k].setMap(null);
+                            }
                         }
                         else {
-                            //alert("adding new route to map");
-                            directionsDisplay2[i] = new google.maps.DirectionsRenderer({
-                                map: m,
-                                directions: response,
-                                routeIndex: i
-                            });
-                            document.getElementById("route2").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
+                            document.getElementById("route2").innerHTML = "";
+                            for (var k = 0; k < directionsDisplay2.length; k++) {
+                                directionsDisplay2[k].setMap(null);
+                            }
+                        }
+                        //alert("calling time out");
+                        for (var i = 0, len = response.routes.length; i < len; i++) {
+                            //response.routes[i].legs[0].duration.value;
+
+                            if (mpn == "1") {
+                                if (response.routes[i].legs[0].distance.value < minvalue1)
+                                {
+                                    minvalue2 = response.routes[i].legs[0].distance.value
+                                    minresponse1 = response;
+                                    document.getElementById("route1").innerHTML = "";
+                                }
+
+                                directionsDisplay1[i] = new google.maps.DirectionsRenderer({
+                                    map: m,
+                                    directions: response,
+                                    routeIndex: i
+                                });
+                                document.getElementById("route1").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
+
+                            }
+                            else {
+                                //alert("adding new route to map");
+                                if (response.routes[i].legs[0].duration.value < minvalue2) {
+                                    minvalue2 = response.routes[i].legs[0].duration.value
+                                    minresponse2 = response;
+                                }
+                                directionsDisplay2[i] = new google.maps.DirectionsRenderer({
+                                    map: m,
+                                    directions: response,
+                                    routeIndex: i
+                                });
+                                document.getElementById("route2").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
+                            }
                         }
                     }
-                }
-            });
-
+                });
+            }
 
 
         }
@@ -230,7 +247,6 @@
                             </select>
                             <b>End: </b>
                             <select style="background-color: #333" id="end" onchange="calcRoutes();">
-                                
                             </select>
                         </div>
 
@@ -244,7 +260,6 @@
                         <h4>Google Approach</h4>
                         <div class="mapCanvas" id="map-canvas"></div>
                         <div id="route1">
-
                         </div>
                     </div>
                     <div class="col-md-2"></div>
@@ -252,7 +267,6 @@
                         <h4>Non Google Approach</h4>
                         <div class="mapCanvas" id="map-canvas2"></div>
                         <div id="route2">
-
                         </div>
                     </div>
 

@@ -40,28 +40,30 @@
     <![endif]-->
 </head>
 
-<body onload="initialize()">
+<body>
 
     <div class="site-wrapper">
 
         <div class="site-wrapper-inner">
-
+            <form id="form1" method="post" runat="server">
             <div class="cover-container">
 
                 <div class="masthead clearfix">
                     <div class="inner">
                         <h3 class="masthead-brand">Appointment Details</h3>
-                        <nav>
-                            <ul class="nav masthead-nav">
-                                <li><a href="/GoogleMaps/Routing.aspx">Home</a></li>
-                                <li class="active"><a href="/Services/Appointment.aspx">Appointment</a></li>
-                                <li><a href="/Services/Doctor.aspx">Doctor</a></li>
-                                <li><a href="/Services/Parking.aspx">Parking</a></li>
-                                <li><a href="/Services/Patient.aspx">Patient</a></li>
-                                <li>
-                                    <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
-                            </ul>
-                        </nav>
+                        
+                            <nav>
+                                <ul class="nav masthead-nav">
+                                    <li><a href="/GoogleMaps/Routing.aspx">Home</a></li>
+                                    <li class="active"><a href="/Services/Appointment.aspx">Appointment</a></li>
+                                    
+                                    <li><a href="/Services/Parking.aspx">Parking</a></li>
+                                    <li><a href="/Services/Patient.aspx">Patient</a></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
+                                </ul>
+                            </nav>
+                        
                     </div>
                 </div>
 
@@ -83,7 +85,7 @@
 
 
             <div id="addAppointment" class="container" >
-                <form id="form1" method="post" runat="server">
+                
                 <div class="row">
                     <div class="col-md-3">Doctor ID</div>
                     <div class="col-md-3"><asp:TextBox ID="doctorid" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox></div>                    
@@ -102,10 +104,11 @@
                 <nav>
                      <li><asp:LinkButton ID="submit" runat="server"  OnClientClick="submt" OnClick="submit_Click">Submit</asp:LinkButton></li>
                 </nav>
-                    </form>
+                    
             </div>
 
             <asp:Label ID="Message" runat="server" Text=""></asp:Label>
+                </form>
         </div>
 
     </div>

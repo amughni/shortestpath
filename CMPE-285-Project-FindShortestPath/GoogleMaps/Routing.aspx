@@ -183,7 +183,7 @@
 
     </script>
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Comparison</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/include/css/bootstrap.min.css" rel="stylesheet">
@@ -212,13 +212,12 @@
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand">Cover</h3>
+                        <h3 class="masthead-brand">Comparison</h3>
                         <form id="form1" runat="server">
                             <nav>
                                 <ul class="nav masthead-nav">
                                     <li class="active"><a href="/GoogleMaps/Routing.aspx">Home</a></li>
                                     <li><a href="/Services/Appointment.aspx">Appointment</a></li>
-                                    <li><a href="/Services/Doctor.aspx">Doctor</a></li>
                                     <li><a href="/Services/Parking.aspx">Parking</a></li>
                                     <li><a href="/Services/Patient.aspx">Patient</a></li>
                                     <li><asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>

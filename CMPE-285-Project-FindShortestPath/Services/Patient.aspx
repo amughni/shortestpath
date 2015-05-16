@@ -54,10 +54,9 @@
                         <nav>
                             <ul class="nav masthead-nav">
                                 <li><a href="/GoogleMaps/Routing.aspx">Home</a></li>
-                                <li class="active"><a href="/Services/Appointment.aspx">Appointment</a></li>
-                                <li><a href="/Services/Doctor.aspx">Doctor</a></li>
+                                <li><a href="/Services/Appointment.aspx">Appointment</a></li>
                                 <li><a href="/Services/Parking.aspx">Parking</a></li>
-                                <li><a href="/Services/Patient.aspx">Patient</a></li>
+                                <li class="active"><a href="/Services/Patient.aspx">Patient</a></li>
                                 <li>
                                     <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
                             </ul>

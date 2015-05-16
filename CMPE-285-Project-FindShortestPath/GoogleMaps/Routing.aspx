@@ -23,12 +23,21 @@
     </style>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAabirU2cPAJm-xMUu_3bt6yIcTjuhFVDc&sensor=false"></script>
     <script>
-        var directionsDisplay;
+        //var directionsDisplay,directionsDisplay1, directionsDisplay2;
+        var directionsDisplay = [];
+        var directionsDisplay1 = [];
+        var directionsDisplay2 = [];
+        //var hospitalcoordinates = ["37.3588482,-121.8420857"];
+        var hospitals = [{ name: "Santa Clara Urgent Care", address: "Santa Clara Urgent Care 1825 Civic Center Dr # 7" },
+            { name: "Kaiser Permanente ", address: "Kaiser Permanente Santa Clara Medical Center 700 Lawrence Expy" },
+            { name: "Santa Clara Valley Medical Center ", address: "Santa Clara Valley Medical Center 751 S Bascom Ave" },
+            { name: "Regional Medical Center ", address: "Regional Medical Center of San Jose 225 N Jackson Ave" }];
         var directionsService = new google.maps.DirectionsService();
         var map, trafficLayer, map2, trafficLayer2;
 
         function initialize() {
-            directionsDisplay = new google.maps.DirectionsRenderer();
+            //directionsDisplay1 = new google.maps.DirectionsRenderer();
+            //directionsDisplay2 = new google.maps.DirectionsRenderer();
             var chicago = new google.maps.LatLng(41.850033, -87.6500523);
             var mapOptions = {
                 zoom: 7,
@@ -37,46 +46,96 @@
             map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
             trafficLayer = new google.maps.TrafficLayer();
 
+
             map2 = new google.maps.Map(document.getElementById('map-canvas2'), mapOptions);
             trafficLayer2 = new google.maps.TrafficLayer();
 
-            directionsDisplay.setMap(map);
+            //directionsDisplay1.setMap(map);
             trafficLayer.setMap(map);
 
-            directionsDisplay.setMap(map2);
+            //directionsDisplay2.setMap(map2);
             trafficLayer2.setMap(map2);
+            populateendddl();
         }
-
+        function populateendddl() {
+            var select = document.getElementById("end");
+            for (var i = 0; i < hospitals.length; i++) {
+                var opt = hospitals[i];
+                var el = document.createElement("option");
+                el.textContent = opt.name;
+                el.value = opt.address;
+                select.appendChild(el);
+            }
+        }
         function calcRoute(mpn) {
             var start = document.getElementById('start').value;
             var end = document.getElementById('end').value;
+
             var m;
+            var alt;
             if (mpn == "1") {
+                document.getElementById("route1").innerHTML = "";
                 m = map;
+                directionsDisplay = directionsDisplay1;
+                alt = true;
             }
             else {
+                alt = false;
                 m = map2;
-
+                directionsDisplay = directionsDisplay2;
             }
-                
+
+
 
             var request = {
                 origin: start,
                 destination: end,
                 travelMode: google.maps.TravelMode.DRIVING,
-                provideRouteAlternatives: true
+                provideRouteAlternatives: false,
+                durationInTraffic: true,
+                avoidHighways: alt,
+                optimizeWaypoints: false
             };
             directionsService.route(request, function (response, status) {
+                console.log(response);
+
                 if (status == google.maps.DirectionsStatus.OK) {
                     //directionsDisplay.setDirections(response);
 
+                    if (mpn == "1") {
+                        for (var k = 0; k < directionsDisplay1.length; k++) {
+                            directionsDisplay1[k].setMap(null);
+                        }
+                    }
+                    else {
+                        document.getElementById("route2").innerHTML = "";
+                        for (var k = 0; k < directionsDisplay2.length; k++) {
+                            directionsDisplay2[k].setMap(null);
+                        }
+                    }
+                    //alert("calling time out");
                     for (var i = 0, len = response.routes.length; i < len; i++) {
                         //response.routes[i].legs[0].duration.value;
-                        new google.maps.DirectionsRenderer({
-                            map: m,
-                            directions: response,
-                            routeIndex: i
-                        });
+
+                        if (mpn == "1") {
+
+                            directionsDisplay1[i] = new google.maps.DirectionsRenderer({
+                                map: m,
+                                directions: response,
+                                routeIndex: i
+                            });
+                            document.getElementById("route1").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
+
+                        }
+                        else {
+                            //alert("adding new route to map");
+                            directionsDisplay2[i] = new google.maps.DirectionsRenderer({
+                                map: m,
+                                directions: response,
+                                routeIndex: i
+                            });
+                            document.getElementById("route2").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
+                        }
                     }
                 }
             });
@@ -84,12 +143,18 @@
 
 
         }
-        function calcRoutes()
-        {
+        function calcRoutes() {
             calcRoute('1');
-            calcRoute('2');
+            timeout();
+
         }
-        
+        function timeout() {
+
+            //directionsDisplay2.setMap(null);
+            calcRoute('2');
+            setTimeout(function () { timeout() }, 10000);
+        }
+
 
     </script>
 
@@ -132,11 +197,8 @@
                         </nav>
                     </div>
                 </div>
-                
+
                 <div class="inner cover">
-
-                    
-
                 </div>
 
                 <div class="mastfoot">
@@ -147,60 +209,55 @@
 
             </div>
             <div class="container">
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <div id="panel">
-                                    <b>Start: </b>
-                                    <select style="background-color:#333" id="start" onchange="calcRoutes();">
-                                        <option value="san jose, ca">San Jose</option>
-                                        <option value="santa clara, ca">Santa Clara</option>
-                                        <option value="joplin, mo">Joplin, MO</option>
-                                        <option value="oklahoma city, ok">Oklahoma City</option>
-                                        <option value="amarillo, tx">Amarillo</option>
-                                        <option value="gallup, nm">Gallup, NM</option>
-                                        <option value="flagstaff, az">Flagstaff, AZ</option>
-                                        <option value="winona, az">Winona</option>
-                                        <option value="kingman, az">Kingman</option>
-                                        <option value="barstow, ca">Barstow</option>
-                                        <option value="san bernardino, ca">San Bernardino</option>
-                                        <option value="los angeles, ca">Los Angeles</option>
-                                    </select>
-                                    <b>End: </b>
-                                    <select style="background-color:#333" id="end" onchange="calcRoutes();">
-                                        <option value="san jose, ca">San Jose</option>
-                                        <option value="santa clara, ca">Santa Clara</option>
-                                        <option value="joplin, mo">Joplin, MO</option>
-                                        <option value="oklahoma city, ok">Oklahoma City</option>
-                                        <option value="amarillo, tx">Amarillo</option>
-                                        <option value="gallup, nm">Gallup, NM</option>
-                                        <option value="flagstaff, az">Flagstaff, AZ</option>
-                                        <option value="winona, az">Winona</option>
-                                        <option value="kingman, az">Kingman</option>
-                                        <option value="barstow, ca">Barstow</option>
-                                        <option value="san bernardino, ca">San Bernardino</option>
-                                        <option value="los angeles, ca">Los Angeles</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4"></div>
-
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div id="panel">
+                            <b>Start: </b>
+                            <select style="background-color: #333" id="start" onchange="calcRoutes();">
+                                <option value="san jose, ca">San Jose</option>
+                                <option value="santa clara, ca">Santa Clara</option>
+                                <option value="joplin, mo">Joplin, MO</option>
+                                <option value="oklahoma city, ok">Oklahoma City</option>
+                                <option value="amarillo, tx">Amarillo</option>
+                                <option value="gallup, nm">Gallup, NM</option>
+                                <option value="flagstaff, az">Flagstaff, AZ</option>
+                                <option value="winona, az">Winona</option>
+                                <option value="kingman, az">Kingman</option>
+                                <option value="barstow, ca">Barstow</option>
+                                <option value="san bernardino, ca">San Bernardino</option>
+                                <option value="los angeles, ca">Los Angeles</option>
+                            </select>
+                            <b>End: </b>
+                            <select style="background-color: #333" id="end" onchange="calcRoutes();">
+                                
+                            </select>
                         </div>
-                        <div class="row">
 
-                            <div class="col-md-5">
-                                <h4>Google Approach</h4>
-                                <div class="mapCanvas" id="map-canvas"></div>
-                            </div>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-5">
-                                <h4>Non Google Approach</h4>
-                                <div class="mapCanvas" id="map-canvas2"></div>
-                            </div>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-5">
+                        <h4>Google Approach</h4>
+                        <div class="mapCanvas" id="map-canvas"></div>
+                        <div id="route1">
 
                         </div>
                     </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <h4>Non Google Approach</h4>
+                        <div class="mapCanvas" id="map-canvas2"></div>
+                        <div id="route2">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
         </div>
 

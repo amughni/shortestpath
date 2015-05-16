@@ -53,11 +53,13 @@
                         <h3 class="masthead-brand">Cover</h3>
                         <nav>
                             <ul class="nav masthead-nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#">Appointment</a></li>
-                                <li><a href="#">Doctor</a></li>
-                                <li><a href="#">Parking</a></li>
-                                <li><a href="#">Patient</a></li>
+                                <li><a href="/GoogleMaps/Routing.aspx">Home</a></li>
+                                <li class="active"><a href="/Services/Appointment.aspx">Appointment</a></li>
+                                <li><a href="/Services/Doctor.aspx">Doctor</a></li>
+                                <li><a href="/Services/Parking.aspx">Parking</a></li>
+                                <li><a href="/Services/Patient.aspx">Patient</a></li>
+                                <li>
+                                    <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
                             </ul>
                         </nav>
                     </div>
@@ -74,9 +76,8 @@
 
             </div>
             <div id="viewAppointment" class="container">
-               <table runat="server" id="tblViewAppointments">
-
-               </table>
+                <table runat="server" id="tblViewAppointments">
+                </table>
             </div>
 
 
@@ -84,14 +85,17 @@
             <div id="addAppointment" class="container">
                 <div class="row">
                     <div class="col-md-3">Doctor ID</div>
-                    <div class="col-md-3"><asp:TextBox ID="doctorid" runat="server" ></asp:TextBox></div>
+                    <div class="col-md-3">
+                        <asp:TextBox ID="doctorid" runat="server"></asp:TextBox></div>
                     <div class="col-md-3">Patient Name</div>
-                    <div class="col-md-3"><asp:TextBox ID="patientName" runat="server" ></asp:TextBox></div>
+                    <div class="col-md-3">
+                        <asp:TextBox ID="patientName" runat="server"></asp:TextBox></div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">Time</div>
-                    <div class="col-md-3"><asp:TextBox ID="time" runat="server" ></asp:TextBox></div>
+                    <div class="col-md-3">
+                        <asp:TextBox ID="time" runat="server"></asp:TextBox></div>
                 </div>
             </div>
 

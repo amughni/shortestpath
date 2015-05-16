@@ -14,7 +14,7 @@
     <RootNamespace>CMPE_285_Project_FindShortestPath</RootNamespace>
     <AssemblyName>CMPE-285-Project-FindShortestPath</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -220,6 +220,7 @@
     <Content Include="Include\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Include\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Include\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\CMPE285.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

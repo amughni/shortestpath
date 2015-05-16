@@ -53,5 +53,11 @@ namespace CMPE_285_Project_FindShortestPath.Services
             Global.lstPatient.Add(oPatient);
             Response.Write("<script>alert('Added Successfully')<script>");
         }
+
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/Login/Login.aspx");
+        }
     }
 }

@@ -198,6 +198,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GoogleMaps\Maps.aspx" />
     <Content Include="GoogleMaps\Routing.aspx" />
+    <Content Include="Images\take.PNG" />
     <Content Include="Include\css\bootstrap-theme.css" />
     <Content Include="Include\css\bootstrap-theme.min.css" />
     <Content Include="Include\css\bootstrap.css" />
@@ -400,6 +401,11 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Appointment.cs" />
+    <Compile Include="Entity\Doctor.cs" />
+    <Compile Include="Entity\LoginInfo.cs" />
+    <Compile Include="Entity\Parking.cs" />
+    <Compile Include="Entity\Patient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

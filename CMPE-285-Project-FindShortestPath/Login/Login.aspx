@@ -6,11 +6,12 @@
 <head runat="server">
     <title>Login</title>
 </head>
-<body>
+<body style="background-image:url(../Images/take.png); background-repeat:round;">
     <form id="form1" runat="server">
-    <div>
-        
-        <asp:Login ID="LoginCtrl" runat="server" OnAuthenticate="LoginCtrl_Authenticate">
+    <div style="text-align:center">
+        <h1 style="margin-top:10%">Welcome to shortest time search</h1>
+        <asp:Login ID="LoginCtrl" runat="server" OnAuthenticate="LoginCtrl_Authenticate" Style="margin-top:5%; margin-left:30%" Height="261px" Width="565px" BorderColor="Black" BorderStyle="Solid" BorderWidth="0px">
+            <TitleTextStyle Font-Bold="True" Font-Size="18px" />
         </asp:Login>
         
     </div>

@@ -27,10 +27,12 @@
         var directionsDisplay = [];
         var directionsDisplay1 = [];
         var directionsDisplay2 = [];
-        var minresponse1=999999999;
-        var minresponse2 = 999999999;
-        var minvalue1;
-        var minvalue2;
+        var minresponse1;
+        var minresponse2;
+        var minvalue1 = 999999999;
+        var minvalue2 = 999999999;
+        var hospital1;
+        var hospital2;
         //var hospitalcoordinates = ["37.3588482,-121.8420857"];
         var hospitals = [{ name: "Santa Clara Urgent Care", address: "Santa Clara Urgent Care 1825 Civic Center Dr # 7" },
             { name: "Kaiser Permanente ", address: "Kaiser Permanente Santa Clara Medical Center 700 Lawrence Expy" },
@@ -60,6 +62,7 @@
             //directionsDisplay2.setMap(map2);
             trafficLayer2.setMap(map2);
             populateendddl();
+            calcRoutes();
         }
         function populateendddl() {
             var select = document.getElementById("end");
@@ -97,14 +100,14 @@
                     origin: start,
                     destination: hospitals[j].address,
                     travelMode: google.maps.TravelMode.DRIVING,
-                    provideRouteAlternatives: alt,
+                    provideRouteAlternatives: false,
                     durationInTraffic: true,
                     avoidHighways: alt,
                     optimizeWaypoints: alt
                 };
                 
                 directionsService.route(request, function (response, status) {
-                    console.log(response);
+                    //console.log(response);
 
                     if (status == google.maps.DirectionsStatus.OK) {
                         //directionsDisplay.setDirections(response);
@@ -130,28 +133,33 @@
                                     minvalue2 = response.routes[i].legs[0].distance.value
                                     minresponse1 = response;
                                     document.getElementById("route1").innerHTML = "";
+                                    hospital1 = hospitals[j];
                                 }
 
                                 directionsDisplay1[i] = new google.maps.DirectionsRenderer({
                                     map: m,
-                                    directions: response,
+                                    directions: minresponse1,
                                     routeIndex: i
                                 });
-                                document.getElementById("route1").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
+                                document.getElementById("route1").innerHTML += ("<p>Hospital Address: " + minresponse1.routes[i].legs[0].end_address + "<br/>Route " + parseInt(i + 1) + " <br/>Duration: " + minresponse1.routes[i].legs[0].duration.text + ", <br/>Distance: " + minresponse1.routes[i].legs[0].distance.text + " </p>");
 
                             }
                             else {
-                                //alert("adding new route to map");
+                                //alert(response.routes[i].legs[0].duration.value);
                                 if (response.routes[i].legs[0].duration.value < minvalue2) {
                                     minvalue2 = response.routes[i].legs[0].duration.value
                                     minresponse2 = response;
+                                    //hospital2 = hospitals[j];
+                                    //console.log("Hospital2")
+                                    //console.log(minresponse2);
                                 }
                                 directionsDisplay2[i] = new google.maps.DirectionsRenderer({
                                     map: m,
-                                    directions: response,
+                                    directions: minresponse2,
                                     routeIndex: i
                                 });
-                                document.getElementById("route2").innerHTML += ("<p>Route " + parseInt(i + 1) + " Duration: " + response.routes[i].legs[0].duration.text + ", Distance: " + response.routes[i].legs[0].distance.text + " </p>");
+                                console.log(minresponse2);
+                                document.getElementById("route2").innerHTML += ("<p>Hospital Address: " + minresponse2.routes[i].legs[0].end_address + "<br/>Route " + parseInt(i + 1) + " <br/>Duration: " + minresponse2.routes[i].legs[0].duration.text + ", <br/>Distance: " + minresponse2.routes[i].legs[0].distance.text + " </p>");
                             }
                         }
                     }
@@ -175,7 +183,7 @@
 
     </script>
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Routes-Comparison-Maps</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/include/css/bootstrap.min.css" rel="stylesheet">
@@ -204,7 +212,7 @@
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand">Comparison </h3>
+                        <h3 class="masthead-brand">Comparison</h3>
                         <form id="form1" runat="server">
                             <nav>
                                 <ul class="nav masthead-nav">
@@ -224,7 +232,7 @@
                 </div>
 
                 <div class="mastfoot">
-                    <div class="inner" id="LinkAppointment">
+                    <div class="inner">
                         <p>Build and managed by Team 6</p>
                     </div>
                 </div>
@@ -253,6 +261,9 @@
                             <b>End: </b>
                             <select style="background-color: #333" id="end" onchange="calcRoutes();">
                             </select>
+
+                            <button onchange="calcRoutes();">Calculate Shortest</button>
+
                         </div>
 
                     </div>

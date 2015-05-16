@@ -71,32 +71,32 @@
                         <div class="row">
                             <div class="col-md-3">Name</div>
                             <div class="col-md-3">
-                                <asp:TextBox ID="patientName" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="patientName" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox>
                             </div>
                             <div class="col-md-3">Address</div>
                             <div class="col-md-3">
-                                <asp:TextBox ID="patientAddress" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="patientAddress" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3">Phone</div>
                             <div class="col-md-3">
-                                <asp:TextBox ID="patientPhone" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="patientPhone" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox>
                             </div>
                             <div class="col-md-3">Email</div>
                             <div class="col-md-3">
-                                <asp:TextBox ID="patientEmail" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="patientEmail" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">History</div>
                             <div class="col-md-3">
-                                <asp:TextBox ID="patientHistory" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="patientHistory" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox>
                             </div>
                             <div class="col-md-3">Blood Group</div>
                             <div class="col-md-3">
-                                <asp:TextBox ID="patientBloodGroup" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="patientBloodGroup" runat="server" BackColor="#66FF66" ForeColor="Black"></asp:TextBox>
                             </div>
                         </div>
                         
